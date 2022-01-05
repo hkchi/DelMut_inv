@@ -134,8 +134,8 @@ for (i in c(6,7,8)) {
     my.data.frame
   }
   my.pp.pop <- data.frame(name=character(), t0=numeric(), ts=numeric(), pp=numeric(), group=factor(), type=factor())
-  my.pp.pop <- calculate.pi0pi4(my.pp.pop, sample_poly, "poly")
-  my.pp.pop <- calculate.pi0pi4(my.pp.pop, sample_mono, "mono")
+  my.pp.pop <- calculate.pp(my.pp.pop, sample_poly, "poly")
+  my.pp.pop <- calculate.pp(my.pp.pop, sample_mono, "mono")
   write_tsv(my.pi0pi4.pop, paste(inv,"pp_pop.txt",sep="."))
   # Normalize and compare
   control.poly <- mean(my.pp.pop3$pp[which(my.pp.pop3$type=="control"&my.pp.pop3$group=="poly")])
