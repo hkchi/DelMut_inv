@@ -22,16 +22,20 @@ do
   echo $header > $species.0fold.table
   echo $header > $species.4fold.table
   bcftools query -f '%CHROM %POS %REF %ALT[ %TGT]\n' -R Han412.0fold.2.txt $vcf >> $species.0fold.table
-	bcftools query -f '%CHROM %POS %REF %ALT[ %TGT]\n' -R Han412.4fold.2.txt $vcf >> $species.4fold.table
-	echo $header > $species.stop.table
-	java -Xmx20G -jar snpEff.jar -c snpEff.config -no-utr -no-downstream -no-upstream -no-intergenic HA412 $vcf | grep -E '^#|stop_gained|stop_lost' | bcftools query -f '%CHROM %POS %REF %ALT[ %TGT]\n' >> $species.stop.table
+  bcftools query -f '%CHROM %POS %REF %ALT[ %TGT]\n' -R Han412.4fold.2.txt $vcf >> $species.4fold.table
+  echo $header > $species.stop.table
+  java -Xmx20G -jar snpEff.jar -c snpEff.config -no-utr -no-downstream -no-upstream -no-intergenic HA412 $vcf | grep -E '^#|stop_gained|stop_lost' | bcftools query -f '%CHROM %POS %REF %ALT[ %TGT]\n' >> $species.stop.table
+done
 ```
 
 Calculate and analyze pi0/pi4
+
 [pi0pi4.R](https://github.com/hkchi/DelMut_inv/tree/master/pi0pi4/pi0pi4.R)
 
 Calculate and analyze Pnonsense/P0
+
 [stop_codon.R](https://github.com/hkchi/DelMut_inv/tree/master/pi0pi4/stop_codon.R)
 
 Compare monomorphic and polymorphic populations
+
 [pop.R](https://github.com/hkchi/DelMut_inv/tree/master/pi0pi4/pop.R)
